@@ -7,20 +7,20 @@ def main() :
     admin = Admin("Admin", "ad@min.com", "1234", "Adabor")
     bank.admin = admin
     
-    
+
     while True :
-        print(f"-------- Welcome to {bank.bank_name} ---------\n")
+        print(f"\n-------- Welcome to {bank.bank_name} ---------\n")
         print("   Chose an Option")
         print("   Option 1 : User")
         print("   Option 2 : Admin")
         print("   Option 3 : Exit\n")
         op1 = int(input("Press the Option : "))
         if op1  == 1 :
-            print("\n Option 1 : Allready have an account")
-            print(" Option 2 : Create new account")
+            print("\n   Option 1 : Allready have an account")
+            print("   Option 2 : Create new account\n")
             op2 = int(input("Press the Option : "))
             if op2 == 1 :
-                accNumber = input("Please give me your account number : ")
+                accNumber = int(input("Please give me your account number : "))
                 if accNumber in bank.accounts :
                     print("\n\n-----Welcome to your account------")
                     print("\n    Chose an Option\n")
@@ -59,15 +59,17 @@ def main() :
                 address = input("Please Give me your Address : ")
                 accType = input("Please Give me Account Type (savings/current) : ")
                 user = User(name, email, address, accType)
+                user.__repr__()
                 bank.accounts[user.accNumber] = user
             else :
                 print("\nInvalid Option, Please Give me Valid Option")
         elif op1 == 2 :
+            print()
             admin_email = input("Please Give me your Email : ")
             admin_pass = input("Please Give me your Password : ")
             if bank.admin.email == admin_email :
                 if bank.admin.password == admin_pass :
-                    print("\n\n-----Welcome to Admin Panel------")
+                    print("\n\n---------Welcome to Admin Panel---------")
                     print("\n    Chose an Option\n")
                     print("    Option 1 : Create Account")
                     print("    Option 2 : Delete Account")
@@ -77,6 +79,7 @@ def main() :
                     print("    Option 6 : on/off Loan Feature\n")
                     op4 = int(input("Please Give me an Option : "))
                     if op4 == 1 :
+                        print()
                         ac_name = input("Please Give me Account Name : ")
                         ac_email = input("Please Give me Account Email : ")
                         ac_address = input("Please Give me Account Address : ")

@@ -15,8 +15,8 @@ class User :
         self.is_bankrupt = False
 
     def __repr__(self) -> str:
-        print("Welcome, your account is created successfully")
-        print(f"Account Number : {self.accNumber}")
+        print("\n    Welcome, your account is created successfully")
+        print(f"    Account Number : {self.accNumber}")
 
     def deposit(self, amount) :
         if amount > 0 :
