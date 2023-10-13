@@ -2,17 +2,21 @@ from User import User
 from Bank import Bank
 
 class Admin :
-    def __init__(self) -> None:
-        pass
+    def __init__(self, name, email, password, address) -> None:
+        self.name = name
+        self.email = email
+        self.password = password
+        self.address = address
 
     def create_account(self, name, email, address, accType) :
         user = User(name, email, address, accType)
         Bank.accounts[user.accNumber] = user
-        return user
 
     def delete_account(self, accNumber) :
         if accNumber in Bank.accounts :
             Bank.accounts.pop(accNumber)
+        else :
+            print("Invali Account Number, Please Give me Valid Account Number")
 
     def see_user_list(self) :
         print("\n---------------------- All User Account List -------------------\n")

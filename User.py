@@ -1,4 +1,5 @@
 import random
+from Bank import Bank
 
 class User :
     def __init__(self, name, email, address, accType) -> None:
@@ -12,6 +13,10 @@ class User :
         self.accNumber = random.randint(100000, 999999)
         self.transection = []
         self.is_bankrupt = False
+
+    def __repr__(self) -> str:
+        print("Welcome, your account is created successfully")
+        print(f"Account Number : {self.accNumber}")
 
     def deposit(self, amount) :
         if amount > 0 :
@@ -52,6 +57,18 @@ class User :
             print("Loan Feature is Currently Not Available")
         else :
             print("Your Loan Limit is Finish, Please Contact the Customer Service")
+
+    def transfer_money(self, accNumber, amount) :
+        if accNumber in Bank.accounts :
+            if amount <= self.balance :
+                Bank.accounts[accNumber].balance += amount
+                self.balance -= amount
+                print(f"\nYour Balance {amount} is Successfully Transferd")
+            else : 
+                print("\nYour Current Balance is Lessthen the amount, Please try anouther amount")
+        else :
+            print("\nAccount does not exist")
+
 
 
 # user = User("Kodom Ali", "kodom@ali.com", "kodom toly", "Savings")
